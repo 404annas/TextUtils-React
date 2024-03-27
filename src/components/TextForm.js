@@ -23,9 +23,7 @@ export default function TextForm(props) {
     props.showAlert("Console Cleared", "success")
   };
   const handleCopyClick = () => {
-    let newText = document.getElementById("myBox");
-    newText.select();
-    navigator.clipboard.writeText(newText.value);
+    navigator.clipboard.writeText(text);
     props.showAlert("Text Copied To Clipboard", "success")
   };
   const handleStrikeClick = () => {
@@ -50,7 +48,7 @@ export default function TextForm(props) {
   return (
     <>
       <div className="container my-3" style={{color : props.mode === "dark" ? "white" : "black"}}>
-        <h1>{props.heading}</h1>
+        <h1 className="mb-3">{props.heading}</h1>
         <p>Enter Text Below 👇</p>
         <div className="mb-3">
           <textarea
@@ -60,39 +58,42 @@ export default function TextForm(props) {
             onChange={handleOnChange}
             id="myBox"
             rows="10"
-            style={{backgroundColor : props.mode === "dark" ? "#bfbfbf" : "white"}}
+            style={{backgroundColor : props.mode === "dark" ? "#13466e" : "white",
+          color: props.mode === 'dark' ? 'white' : '#042743'}}
           ></textarea>
         </div>
-        <button className="btn btn-primary" onClick={handleUpCllick}>
+        <button disabled={text.length === 0} className="btn btn-primary my-1" onClick={handleUpCllick}>
           CONVERT TO UPPERCASE
         </button>
-        <button className="btn btn-success ms-2" onClick={handleLowCllick}>
+        <button disabled={text.length === 0} className="btn btn-success ms-2 my-1" onClick={handleLowCllick}>
           convert to lowercase
         </button>
-        <button className="btn btn-secondary ms-2" onClick={handleClearCllick}>
+        <button disabled={text.length === 0} className="btn btn-secondary ms-2 my-1" onClick={handleClearCllick}>
           Clear Text
         </button>
-        <button className="btn btn-dark ms-2" onClick={handleCopyClick}>
+        <button disabled={text.length === 0} className="btn btn-dark ms-2 my-1" onClick={handleCopyClick}>
           Copy Text
         </button>
-        <button className="btn btn-warning ms-2" onClick={handleStrikeClick}>
+        <button disabled={text.length === 0} className="btn btn-warning ms-2 my-1" onClick={handleStrikeClick}>
           <span style={styling}>Convert Into Striked</span>
         </button>
-        <button className="btn btn-info ms-2" onClick={handleExtraSpaces}>
+        <button disabled={text.length === 0} className="btn btn-info ms-2 my-1" onClick={handleExtraSpaces}>
           Remove Extra Spaces
         </button>
       </div>
       <div className="container my-3" style={{color : props.mode === "dark" ? "white" : "black"}}>
         <h2>Your Text Summary</h2>
         <p>
-          <b>{text.length < 1 ? 0 : text.split(" ").length}</b> Words & <b>{text.length}</b>{" "}
+          <b>{text.split(/\s+/).filter((element) => {
+            return (element.length !== 0)
+          }).length}</b> Words & <b>{text.length}</b>{" "}
           Characters
         </p>
         <p>
           <b>{text.length < 1 ? 0 : 0.008 * text.split(" ").length}</b> Minutes Read
         </p>
         <h2>Preview</h2>
-        <p>{text.length < 0 ? text : "Enter Text Above To Preview It"}</p>
+        <p>{text.length > 0 ? text : "Nothing To Preview"}</p>
       </div>
     </>
   );

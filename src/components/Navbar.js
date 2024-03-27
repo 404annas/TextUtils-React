@@ -11,7 +11,7 @@ export default function Navbar(props) {
         {/* <Link className="navbar-brand" to="/">
           {props.title}
         </Link> */}
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/">
           {props.title}
         </a>
         <button
@@ -31,7 +31,7 @@ export default function Navbar(props) {
               {/* <Link className="nav-link active" aria-current="page" to="/">
                 {props.home}
               </Link> */}
-              <a className="nav-link active" aria-current="page" href="#">
+              <a className="nav-link active" aria-current="page" href="/">
                 {props.home}
               </a>
             </li>
@@ -39,12 +39,12 @@ export default function Navbar(props) {
               {/* <Link className="nav-link" to="/about">
                 {props.aboutText}
               </Link> */}
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="/">
                 {props.aboutText}
               </a>
             </li>
           </ul>
-          <div className="dropdown">
+          <div className="dropdown mx-2">
             <button
               className="btn btn-secondary dropdown-toggle"
               type="button"
@@ -74,7 +74,7 @@ export default function Navbar(props) {
           <div
             className={`form-check form-switch text-${
               props.mode === "light" ? "dark" : "light"
-            } my-2`}
+            } my-2 mx-2`}
           >
             <input
               className="form-check-input"

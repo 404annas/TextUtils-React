@@ -99,7 +99,7 @@ function App() {
         </Routes> */}
 
       <TextForm
-        heading="Enter your text to perform actions"
+        heading="Try TextUtils - Word Counter, Character Counter, Customization Of Text"
         mode={mode}
         showAlert={settingAlert}
       />
@@ -107,7 +107,7 @@ function App() {
       {/* Default */}
       {/* <Navbar/> */}
 
-      {/* <About/> */}
+      {/* <About mode={mode}/> */}
       {/* </BrowserRouter> */}
     </>
   );
